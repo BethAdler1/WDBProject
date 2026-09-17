@@ -1,0 +1,57 @@
+
+nav ul li{
+    list-style-type: none;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  
+    padding: 10px;
+}
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+nav {
+    background-color:aliceblue;
+    border: 2px solid #484be6;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+body {
+    font: Lato, sans-serif;
+    background-color:aliceblue;
+    margin: 20px;
+    padding: 20px;
+}
+h2{
+    font-size: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    margin: 20px;
+    justify-content: center;
+}
+label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 10px;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+}
+
