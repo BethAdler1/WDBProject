@@ -1,3 +1,4 @@
+![System Design Diagram](images/ERD_image-WDP.png)
 a. What problem does your app solve or what purpose does it serve?
 
 reviving my previous hackathon Idea: The Problem: Addressing Food Insecurity and Resource Waste on Campus
