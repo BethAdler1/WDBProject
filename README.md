@@ -1,4 +1,19 @@
-![System Design Diagram](images/ERD_image-WDP.png)
+ <h2> Entity-Relationship Diagram (ERD)</h2>
+ <ul>
+   <li><strong>What it is: </strong>A visual conceptual blueprint that outlines the system's data architecture by mapping out entities , their attributes, and the specific relationships connecting them based on business rules.</li>
+   <li><strong>Purpose: </strong>To provide a high-level, human-readable overview of the data requirements. Allowing all those involved to agree on the system's scope and components and logic before code is written.</li>
+ </ul>
+
+
+
+![System Design Diagram](/images/ERD_image_WDB.png)
+<h2>Relational Model</h2>
+ <ul>
+   <li><strong>What it is: </strong>Translates the conceptual ERD into structured tables (relations).</li>
+   <li><strong>Purpose: </strong>To bridge the gap between abstract design and physical database implementation.</li>
+ </ul>
+
+![Relations Diagram](/images/RelationsDiagram.png)
 a. What problem does your app solve or what purpose does it serve?
 
 reviving my previous hackathon Idea: The Problem: Addressing Food Insecurity and Resource Waste on Campus
