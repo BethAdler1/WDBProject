@@ -8,4 +8,10 @@ Flexible Accounts: Users can sign up as an Individual, a Club/Organization, or a
 
 c. What actions will users be able to perform (e.g., sign up, add items, search,
 comment, etc.)?
-Anyone can create a post detailing available food, including the location and a custom message describing what's available (e.g., "Leftover pizza from 6 PM event," "Box of pastries available until 1 PM").
+sign up for an Account
+
+Anyone can create posts detailing available food, including the location and a custom message describing what's available (e.g., "Leftover pizza from 6 PM event," "Box of pastries available until 1 PM").
+
+User
+username
+password
