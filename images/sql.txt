@@ -1,0 +1,105 @@
+
+mysql> CREATE DATABASE wdb
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SHOW DATABASES
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| adler_db           |
+| employee           |
+| information_schema |
+| labwork            |
+| mynewpaltz         |
+| mysql              |
+| nation             |
+| performance_schema |
+| sys                |
+| test               |
+| wdb                |
++--------------------+
+11 rows in set (0.03 sec)
+
+mysql> USE wdb;
+Database changed
+mysql> CREATE TABLE USER (User_ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, Name VARCHAR(50) NOT NULL UNIQUE,Email VARCHAR(50) NOT NULL UNIQUE,User_Type ENUM('Business', 'Individual', 'Club') NOT NULL,Phone VARCHAR(25) NOT NULL UNIQUE);                 
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> CREATE TABLE FOOD_POSTING ( Posting_ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,Title VARCHAR(100) NOT NULL, Description VARCHAR(400) DEFAULT '', Posted_At DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,Expires_At DATETIME GENERATED ALWAYS AS (Posted_At + INTERVAL 24 HOUR) STORED,Location VARCHAR(100) NOT NULL, Photo VARCHAR(400)  NULL,User_ID INT NOT NULL UNIQUE,CONSTRAINT fk_food_posting_user FOREIGN KEY (User_ID) REFERENCES USER(User_ID));             
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> SHOW TABLES;
++---------------+
+| Tables_in_wdb |
++---------------+
+| food_posting  |
+| user          |
++---------------+
+2 rows in set (0.00 sec)
+
+mysql> DESCRIBE food_posting;
++-------------+--------------+------+-----+---------------------+------------------+
+| Field       | Type         | Null | Key | Default             | Extra            |
++-------------+--------------+------+-----+---------------------+------------------+
+| Posting_ID  | int(11)      | NO   | PRI | NULL                | auto_increment   |
+| Title       | varchar(100) | NO   |     | NULL                |                  |
+| Description | varchar(400) | YES  |     |                     |                  |
+| Posted_At   | datetime     | NO   |     | current_timestamp() |                  |
+| Expires_At  | datetime     | YES  |     | NULL                | STORED GENERATED |
+| Location    | varchar(100) | NO   |     | NULL                |                  |
+| Photo       | varchar(400) | YES  |     | NULL                |                  |
+| User_ID     | int(11)      | NO   | UNI | NULL                |                  |
++-------------+--------------+------+-----+---------------------+------------------+
+8 rows in set (0.02 sec)
+
+mysql> DESCRIBE user;
++-----------+--------------------------------------+------+-----+---------+----------------+
+| Field     | Type                                 | Null | Key | Default | Extra          |
++-----------+--------------------------------------+------+-----+---------+----------------+
+| User_ID   | int(11)                              | NO   | PRI | NULL    | auto_increment |
+| Name      | varchar(50)                          | NO   | UNI | NULL    |                |
+| Email     | varchar(50)                          | NO   | UNI | NULL    |                |
+| User_Type | enum('Business','Individual','Club') | NO   |     | NULL    |                |
+| Phone     | varchar(25)                          | NO   | UNI | NULL    |                |
++-----------+--------------------------------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> SHOW CREATE TABLE user;
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                                                                                                                                                                                                                                 |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| user  | CREATE TABLE `user` (
+  `User_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `User_Type` enum('Business','Individual','Club') NOT NULL,
+  `Phone` varchar(25) NOT NULL,
+  PRIMARY KEY (`User_ID`),
+  UNIQUE KEY `Name` (`Name`),
+  UNIQUE KEY `Email` (`Email`),
+  UNIQUE KEY `Phone` (`Phone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SHOW CREATE TABLE food_posting;
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table        | Create Table                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| food_posting | CREATE TABLE `food_posting` (
+  `Posting_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(100) NOT NULL,
+  `Description` varchar(400) DEFAULT '',
+  `Posted_At` datetime NOT NULL DEFAULT current_timestamp(),
+  `Expires_At` datetime GENERATED ALWAYS AS (`Posted_At` + interval 24 hour) STORED,
+  `Location` varchar(100) NOT NULL,
+  `Photo` varchar(400) DEFAULT NULL,
+  `User_ID` int(11) NOT NULL,
+  PRIMARY KEY (`Posting_ID`),
+  UNIQUE KEY `User_ID` (`User_ID`),
+  CONSTRAINT `fk_food_posting_user` FOREIGN KEY (`User_ID`) REFERENCES `user` (`User_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
